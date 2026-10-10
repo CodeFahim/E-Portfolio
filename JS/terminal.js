@@ -1,181 +1,182 @@
-/* ==========================================================================
-   terminal.js — the home page test runner.
-   Runs a fake test suite about you, then accepts commands (type "help").
-   Edit SUITE to change what the tests say.
-   ========================================================================== */
-(() => {
-  "use strict";
+/* =========================================================
+   terminal.js
+   The terminal on the home page.
+   Part 1: plays a fake test run about you.
+   Part 2: lets visitors type commands (help, projects, ...).
+   To change the test lines, edit TESTS below.
+   ========================================================= */
 
-  const body = document.getElementById("term-body");
-  const form = document.getElementById("term-form");
-  const input = document.getElementById("term-input");
-  const rerun = document.getElementById("term-rerun");
-  if (!body || !form || !input) return;
+const TESTS = [
+  { name: "builds full-stack web apps", time: 14 },
+  { name: "writes requirements before code", time: 9 },
+  { name: "tests what he ships", time: 17 },
+  { name: "publishes research (IEEE, 2026)", time: 11 },
+];
 
-  const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const termScreen = document.getElementById("term-screen");
+const commandForm = document.getElementById("term-form");
+const commandInput = document.getElementById("term-input");
+const rerunButton = document.getElementById("term-rerun");
 
-  const SUITE = [
-    { name: "builds full-stack web apps", ms: 14 },
-    { name: "writes requirements before code", ms: 9 },
-    { name: "tests what he ships", ms: 17 },
-    { name: "publishes research (IEEE, 2026)", ms: 11 },
-    { name: "starts an internship", pending: "Jan 2027" },
-  ];
+// If someone turned off animations in system settings, show everything at once
+const noAnimation = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  let runId = 0;
-  const sleep = (ms) => new Promise((r) => setTimeout(r, reduced ? 0 : ms));
+let isRunning = false;
 
-  const line = (html, cls = "") => {
-    const el = document.createElement("div");
-    el.className = `term-line ${cls}`.trim();
-    el.innerHTML = html;
-    body.appendChild(el);
-    body.scrollTop = body.scrollHeight;
-    return el;
-  };
 
-  async function typeInto(el, text, id) {
-    if (reduced) { el.textContent = text; return; }
-    for (const ch of text) {
-      if (id !== runId) return;
-      el.textContent += ch;
-      await sleep(28 + Math.random() * 30);
-    }
+/* Helpers ------------------------------------------------- */
+
+// Adds one line to the terminal screen
+function printLine(html, extraClass) {
+  const line = document.createElement("div");
+  line.className = "term-line " + (extraClass || "");
+  line.innerHTML = html;
+  termScreen.appendChild(line);
+  termScreen.scrollTop = termScreen.scrollHeight; // keep the newest line visible
+}
+
+// Waits for some milliseconds (used with await)
+function wait(ms) {
+  if (noAnimation) ms = 0;
+  return new Promise(function (resolve) {
+    setTimeout(resolve, ms);
+  });
+}
+
+
+/* Part 1: the test run ------------------------------------ */
+
+async function runTests() {
+  if (isRunning) return; // don't start twice
+  isRunning = true;
+  termScreen.innerHTML = "";
+
+  printLine('<span class="green">$</span> npm test fahim');
+  await wait(600);
+  printLine('<span class="dim">&gt; jest --verbose fahim.spec.js</span>');
+  await wait(500);
+  printLine(" ");
+  printLine('<span class="pass-badge">PASS</span> fahim.spec.js');
+  printLine("Fahim", "indent-1");
+
+  for (const test of TESTS) {
+    await wait(500);
+    printLine(`<span class="green">✓</span> ${test.name} <span class="dim">(${test.time} ms)</span>`, "indent-2");
   }
 
-  async function runSuite() {
-    const id = ++runId;
-    body.innerHTML = "";
-    const cmd = line('<span class="t-pass">$</span> <span class="cmd"></span>');
-    await typeInto(cmd.querySelector(".cmd"), "npm test fahim", id);
-    await sleep(350);
-    if (id !== runId) return;
-    line('<span class="t-dim">&gt; jest --verbose fahim.spec.js</span>');
-    await sleep(500);
-    line("&nbsp;");
-    line('<span class="t-badge">PASS</span> fahim.spec.js');
-    line("Fahim", "indent-1");
-    let passed = 0, pending = 0, total = 0;
-    for (const t of SUITE) {
-      await sleep(t.pending ? 650 : 380 + t.ms * 12);
-      if (id !== runId) return;
-      total++;
-      if (t.pending) {
-        pending++;
-        line(`<span class="t-pending">○ ${esc(t.name)}</span> <span class="t-dim">(pending: ${esc(t.pending)})</span>`, "indent-2");
+  await wait(700);
+  printLine('<span class="yellow">○ starts an internship</span> <span class="dim">(pending: Jan 2027)</span>', "indent-2");
+  await wait(400);
+  printLine(" ");
+  printLine(`<span class="dim">Tests:</span> <span class="green">${TESTS.length} passed</span>, <span class="yellow">1 pending</span>, ${TESTS.length + 1} total`);
+  printLine('<span class="dim">Type</span> help <span class="dim">to explore.</span>');
+
+  isRunning = false;
+}
+
+
+/* Part 2: commands ---------------------------------------- */
+
+function runCommand(text) {
+  const words = text.toLowerCase().split(" ");
+  const command = words[0];
+  const extra = words[1];
+
+  switch (command) {
+    case "help":
+      printLine('<span class="blue">Commands</span>');
+      printLine("  projects   list my projects");
+      printLine("  open 1     open project number 1");
+      printLine("  skills     what I work with");
+      printLine("  research   my papers");
+      printLine("  contact    how to reach me");
+      printLine("  cv         download my CV");
+      printLine("  theme      switch light / dark");
+      printLine("  run        run the tests again");
+      printLine("  clear      clear the screen");
+      break;
+
+    case "projects":
+      PROJECTS.forEach(function (project, i) {
+        printLine(`  <span class="blue">${i + 1}</span>  ${project.title} <span class="dim">(${project.status})</span>`);
+      });
+      printLine('<span class="dim">Type</span> open 1 <span class="dim">to read one.</span>');
+      break;
+
+    case "open": {
+      const project = PROJECTS[Number(extra) - 1];
+      if (project) {
+        printLine(`<span class="dim">Opening ${project.title}...</span>`);
+        window.location.href = "project.html?id=" + project.id;
       } else {
-        passed++;
-        line(`<span class="term-row"><span><span class="t-pass">✓</span> ${esc(t.name)}</span><span class="ms">${t.ms} ms</span></span>`, "indent-2");
+        printLine(`<span class="red">No project number "${extra || ""}".</span> Pick 1 to ${PROJECTS.length}.`);
       }
+      break;
     }
-    await sleep(400);
-    if (id !== runId) return;
-    line("&nbsp;");
-    line(`<span class="t-dim">Tests:</span> <span class="t-pass">${passed} passed</span>, <span class="t-pending">${pending} pending</span>, ${total} total`);
-    line('<span class="t-dim">Type</span> help <span class="t-dim">to explore, or press Re-run.</span>');
+
+    case "skills":
+      SKILLS.forEach(function (group) {
+        printLine(`  <span class="blue">${group.group}:</span> ${group.items.join(", ")}`);
+      });
+      break;
+
+    case "research":
+      RESEARCH.forEach(function (paper) {
+        if (!paper.hidden && paper.title) {
+          printLine(`  <span class="green">✓</span> ${paper.title} <span class="dim">(${paper.venue})</span>`);
+        }
+      });
+      break;
+
+    case "contact":
+      printLine(`  email     <a href="mailto:${SITE.email}">${SITE.email}</a>`);
+      if (SITE.github) printLine(`  github    <a href="${SITE.github}" target="_blank">${SITE.github}</a>`);
+      if (SITE.linkedin) printLine(`  linkedin  <a href="${SITE.linkedin}" target="_blank">${SITE.linkedin}</a>`);
+      break;
+
+    case "cv":
+      if (SITE.cv) {
+        printLine('<span class="dim">Opening CV...</span>');
+        window.open(SITE.cv);
+      } else {
+        printLine('<span class="yellow">CV not uploaded yet.</span> Email me and I will send it.');
+      }
+      break;
+
+    case "theme":
+      toggleTheme(); // from main.js
+      printLine(`<span class="dim">Theme is now ${getTheme()}.</span>`);
+      break;
+
+    case "run":
+      runTests();
+      break;
+
+    case "clear":
+      termScreen.innerHTML = "";
+      break;
+
+    case "sudo":
+      printLine('<span class="red">Permission denied.</span> <span class="dim">Hire me first.</span>');
+      break;
+
+    default:
+      printLine(`<span class="red">command not found: ${safe(command)}</span>. Type help to see what works.`);
   }
+}
 
-  /* ---------- commands ---------- */
-  const COMMANDS = {
-    help: () => [
-      '<span class="t-accent">Commands</span>',
-      "  projects   list my projects",
-      "  open &lt;n&gt;     open project number n",
-      "  skills     what I work with",
-      "  research   my papers",
-      "  about      who I am",
-      "  contact    how to reach me",
-      "  cv         download my CV",
-      "  theme      switch light / dark",
-      "  run        re-run the test suite",
-      "  clear      clear the screen",
-    ],
-    projects: () => [
-      ...PROJECTS.map((p, i) => `  <span class="t-accent">${i + 1}</span>  ${esc(p.title)} <span class="t-dim">· ${esc(p.status)}</span>`),
-      '<span class="t-dim">Type</span> open 1 <span class="t-dim">to read one.</span>',
-    ],
-    open: (arg) => {
-      const n = parseInt(arg, 10);
-      const p = PROJECTS[n - 1] || PROJECTS.find((x) => x.id === arg);
-      if (!p) return [`<span class="t-fail">No project "${esc(arg || "")}".</span> Try a number from 1 to ${PROJECTS.length}.`];
-      setTimeout(() => (location.href = `project.html?id=${encodeURIComponent(p.id)}`), reduced ? 0 : 400);
-      return [`<span class="t-dim">Opening ${esc(p.title)}…</span>`];
-    },
-    skills: () => SKILLS.map((g) => `  <span class="t-accent">${esc(g.group.padEnd(8))}</span>${g.items.map(esc).join(", ")}`),
-    research: () => {
-      const r = RESEARCH.filter((x) => !x.hidden && x.title);
-      return r.length ? r.map((x) => `  <span class="t-pass">✓</span> ${esc(x.title)} <span class="t-dim">(${esc(x.venue)})</span>`) : ["  No papers listed yet."];
-    },
-    about: () => [
-      `  ${esc(SITE.name)}`,
-      `  ${esc(SITE.role)}, ${esc(SITE.university)}`,
-      `  ${esc(SITE.location)}`,
-      `  <span class="t-dim">More at</span> <a href="about.html">about.html</a>`,
-    ],
-    contact: () => [
-      `  email     <a href="mailto:${esc(SITE.email)}">${esc(SITE.email)}</a>`,
-      SITE.github && `  github    <a href="${esc(SITE.github)}" target="_blank" rel="noopener">${esc(SITE.github.replace(/^https?:\/\//, ""))}</a>`,
-      SITE.linkedin && `  linkedin  <a href="${esc(SITE.linkedin)}" target="_blank" rel="noopener">${esc(SITE.linkedin.replace(/^https?:\/\//, ""))}</a>`,
-    ].filter(Boolean),
-    cv: () => {
-      if (!SITE.cv) return ['<span class="t-pending">CV not uploaded yet.</span> Email me and I will send it.'];
-      const a = document.createElement("a");
-      a.href = SITE.cv; a.download = "";
-      document.body.appendChild(a); a.click(); a.remove();
-      return ['<span class="t-dim">Downloading CV…</span>'];
-    },
-    theme: () => {
-      const next = window.__currentTheme() === "dark" ? "light" : "dark";
-      window.__setTheme(next);
-      return [`<span class="t-dim">Theme set to ${next}.</span>`];
-    },
-    run: () => { runSuite(); return null; },
-    clear: () => { body.innerHTML = ""; return null; },
-    sudo: () => ['<span class="t-fail">Permission denied.</span> <span class="t-dim">Nice try. Hire me first.</span>'],
-    hire: () => COMMANDS.contact(),
-    ls: () => COMMANDS.help(),
-  };
+// When the visitor presses Enter
+commandForm.addEventListener("submit", function (event) {
+  event.preventDefault(); // stop the page from reloading
+  const text = commandInput.value.trim();
+  commandInput.value = "";
+  if (text === "" || isRunning) return;
 
-  const history = [];
-  let hIndex = 0;
+  printLine(`<span class="green">$</span> ${safe(text)}`);
+  runCommand(text);
+});
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const raw = input.value.trim();
-    input.value = "";
-    if (!raw) return;
-    runId++; // stop an animation that is still running
-    history.push(raw);
-    hIndex = history.length;
-    line(`<span class="t-pass">$</span> ${esc(raw)}`);
-    const [name, ...rest] = raw.toLowerCase().split(/\s+/);
-    const fn = COMMANDS[name];
-    const out = fn ? fn(rest.join(" ")) : [`<span class="t-fail">command not found: ${esc(name)}.</span> Type help to see what works.`];
-    if (out) out.forEach((l) => line(l));
-  });
+rerunButton.addEventListener("click", runTests);
 
-  input.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowUp" && history.length) {
-      e.preventDefault();
-      hIndex = Math.max(0, hIndex - 1);
-      input.value = history[hIndex];
-    } else if (e.key === "ArrowDown" && history.length) {
-      e.preventDefault();
-      hIndex = Math.min(history.length, hIndex + 1);
-      input.value = history[hIndex] || "";
-    } else if (e.key === "Tab" && input.value) {
-      const match = Object.keys(COMMANDS).find((c) => c.startsWith(input.value.toLowerCase()));
-      if (match) { e.preventDefault(); input.value = match; }
-    }
-  });
-
-  body.addEventListener("click", (e) => {
-    // desktop only: focusing on tap would pop the phone keyboard
-    if (e.target.closest("a") || getSelection().toString() || !matchMedia("(pointer: fine)").matches) return;
-    input.focus({ preventScroll: true });
-  });
-  rerun?.addEventListener("click", runSuite);
-
-  runSuite();
-})();
+// Start the test run when the page opens
+runTests();

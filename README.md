@@ -29,3 +29,14 @@ Open the folder in VS Code, right-click `index.html`, then **Open with Live Serv
 ## Deploy (GitHub Pages)
 
 Push to a repo named `<username>.github.io`, then the site is live at `https://<username>.github.io`.
+
+## Code rules (follow these when adding code)
+
+1. **One job per file.** HTML = structure, CSS = looks, `data.js` = content, `main.js` = page logic, `terminal.js` = terminal.
+2. **Content only in `data.js`.** Never type project text into HTML.
+3. **Colors only in section 1 of `style.css`.** Everything else uses `var(--name)`.
+4. **One class = one thing.** `.btn`, `.btn-primary`, `.project-row`... no IDs for styling.
+5. **JS pattern:** find element by `id` → build HTML string from data → `element.innerHTML = html`.
+6. **Plain functions:** `function name() {}` with a comment above saying what it does.
+7. **Always pass text through `safe()`** before putting it in HTML.
+8. **Phone styles go at the bottom** of `style.css`, in section 13.
