@@ -293,7 +293,7 @@ function setupCvLinks() {
   const links = document.querySelectorAll(".cv-link");
 
   function removeAll() {
-    links.forEach(function (link) { link.remove(); });
+    links.forEach(function (link) { (link.closest("li") || link).remove(); });
   }
 
   if (!SITE.cv) {
@@ -307,6 +307,12 @@ function setupCvLinks() {
     link.setAttribute("download", "");
     link.hidden = true;
   });
+
+  // Opened by double-click (file://): browsers block the check, so just show the buttons
+  if (location.protocol === "file:") {
+    links.forEach(function (link) { link.hidden = false; });
+    return;
+  }
 
   fetch(SITE.cv, { method: "HEAD" })
     .then(function (response) {

@@ -37,6 +37,7 @@ const SKILLS = {
       items: [
         { name: "Next.js", icon: "nextdotjs" },
         { name: "React", icon: "react" },
+        { name: "Tailwind CSS", icon: "tailwindcss" },
         { name: "TypeScript", icon: "typescript" },
         { name: "JavaScript", icon: "javascript" },
       ],
@@ -60,7 +61,7 @@ const SKILLS = {
     },
   ],
   languages: ["C++", "C#", "Java", "Python"],
-  other: [".NET", "React Native", "Git", "GitHub"],
+  other: [".NET", "Git", "GitHub"],
   concepts: [
     "Object-Oriented Programming",
     "Database Design",
