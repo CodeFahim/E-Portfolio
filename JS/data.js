@@ -21,8 +21,8 @@ const SITE = {
   facebook: "https://www.facebook.com/share/1E7g4z1SqD/",
   github: "https://github.com/CodeFahim",
   linkedin: "",   // TODO: "https://www.linkedin.com/in/your-handle"
-  cv: "",         // TODO: put your CV in assets/cv.pdf, then write "assets/cv.pdf"
-  photo: "",      // TODO: put your photo in assets/photo.jpg, then write "assets/photo.jpg"
+  cv: "assets/cv/Tahsin_Ahmed_Fahim_CV.pdf",   // put your CV there with this exact name; the buttons appear by themselves
+  photo: "assets/Photo.png",      // TODO: put your photo in assets/photo.jpg, then write "assets/photo.jpg"
 };
 
 

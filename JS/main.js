@@ -287,7 +287,38 @@ function fillOrRemove(className, url) {
 
 fillOrRemove("github-link", SITE.github);
 fillOrRemove("linkedin-link", SITE.linkedin);
-fillOrRemove("cv-link", SITE.cv);
+// CV buttons: shown only when the PDF is really in assets/cv/
+// (so there is never a broken "Download CV" button)
+function setupCvLinks() {
+  const links = document.querySelectorAll(".cv-link");
+
+  function removeAll() {
+    links.forEach(function (link) { link.remove(); });
+  }
+
+  if (!SITE.cv) {
+    removeAll();
+    return;
+  }
+
+  // Hide while checking, then show if the file exists
+  links.forEach(function (link) {
+    link.href = SITE.cv;
+    link.setAttribute("download", "");
+    link.hidden = true;
+  });
+
+  fetch(SITE.cv, { method: "HEAD" })
+    .then(function (response) {
+      if (response.ok) {
+        links.forEach(function (link) { link.hidden = false; });
+      } else {
+        removeAll();
+      }
+    })
+    .catch(removeAll);
+}
+setupCvLinks();
 fillOrRemove("whatsapp-link", SITE.whatsapp);
 fillOrRemove("facebook-link", SITE.facebook);
 

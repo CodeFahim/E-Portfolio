@@ -109,6 +109,11 @@ h1, h2, h3, h4 {
 }
 
 /* Hidden on screen, still read by screen readers */
+/* Elements hidden by JavaScript stay hidden even if a class sets display */
+[hidden] {
+  display: none !important;
+}
+
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -1125,6 +1130,11 @@ h1, h2, h3, h4 {
   border: 1px solid var(--line);
   border-radius: var(--radius-small);
   background: var(--card);
+}
+
+/* Download CV under the contact list */
+.contact-cv {
+  margin-top: 1.25rem;
 }
 
 .contact-list a:hover {
