@@ -91,21 +91,27 @@ const PROJECTS = [
     stack: ["NestJS", "Next.js", "TypeScript", "TypeORM", "PostgreSQL", "JWT"],
     status: "Completed",
     year: "2026",
-    role: "Backend developer in a student team",
+    role: "Full-stack developer",
     links: { live: "", repo: "https://github.com/CodeFahim/Paws_Home_BD" },
     image: "assets/pawshome.webp",
     overview:
       "PawsHome BD is a pet adoption platform where listers post pets, admins approve them, adopters find them a new home, and vets look after them. The backend is built with NestJS and PostgreSQL, and the frontend with Next.js.",
     problem: "",                     // TODO: 1-2 sentences on the problem it solves
     features: [
-      "Role-based authentication and authorization for adopters, listers, veterinarians and admins",
-      "Admin management",
-      "Pet listing verification and approval",
-      "Veterinarian and lister management",
-      "Listing and dispute management",
+      "Four roles (admins, pet listers, adopters and veterinarians), each with its own sign-up, JWT login, dashboard and navigation",
+      "Passwords hashed with bcrypt for every role",
+      "Pet listers add pets with photos, see their own listings and remove them",
+      "Admins review pending pets and approve, reject or mark them as adopted",
+      "Adopters only see pets the admin has approved",
+      "Admin dashboard with live counts of users, pets, adoptions and pending approvals",
+      "Links between roles: admins assign listers, adopters connect with listers and vets, vets manage their adopters",
+      "Profile management for every role: edit details, upload a profile photo, activate or deactivate accounts",
+      "Search for listers and vets by name",
+      "Welcome emails sent to new users",
     ],
     architecture: [
-      "NestJS modules separate each part of the system, with controllers for routes and services for business logic",
+      "74 REST API endpoints across four NestJS modules (Admin, Pet Lister, Adopter, Vet), with controllers for routes and services for business logic",
+      "Next.js frontend with 41 pages, a separate dashboard and navigation for each role",
       "REST API secured with JWT and a custom JwtAuthGuard on protected routes",
       "DTO validation rejects bad input before it reaches the database",
       "Email notifications through a mailer integration, and image uploads with Multer",
@@ -117,11 +123,9 @@ const PROJECTS = [
     challenges: [
       "Debugged and fixed 401 errors coming from the auth guard",
       "Debugged failing email delivery and foreign key constraint violations",
-      "Found hardcoded SMTP credentials during review and flagged them as a security issue",
+      "Found hardcoded SMTP credentials in the code and marked them to be moved into environment variables",
     ],
-    contribution: [
-      "Built the admin module of the backend: authentication, entity relationships, validation, email and file uploads",
-    ],
+    contribution: [],
     next: [
       "Move secrets to environment variables",
       "Add unit tests for the admin service and end-to-end tests for the auth flow",
@@ -137,31 +141,40 @@ const PROJECTS = [
     course: "C#",
     area: "desktop",
     tagline:
-      "A cafe management desktop app where admins manage users, the menu and sales records, and cashiers take orders and print invoices.",
+      "A cafe management desktop app where admins manage users, the menu and sales records, and cashiers take orders and generate invoices.",
     stack: ["C#", "Windows Forms", "SQL Server"],
     status: "Completed",
     year: "",                        // TODO
-    role: "",                        // TODO: e.g. "Solo project"
+    role: "Desktop application developer",
     links: { live: "", repo: "https://github.com/CodeFahim/Cafe_La_vien" },
     image: "assets/cafe-la-vie.webp",
     overview:
       "A cafe management system built for my C# course with Windows Forms and SQL Server. It has two kinds of users: admins run the cafe's data, and cashiers handle orders at the counter.",
     problem: "",                     // TODO: 1-2 sentences
     features: [
-      "Two roles: Admin and Cashier, each with their own screens",
-      "Admins manage users, menu items and the sales history",
-      "Cashiers take orders, manage the cart and print invoices",
-      "Billing with VAT calculation",
+      "Login screen that opens the Admin or Cashier panel based on the user's role, with a show-password option",
+      "Admins add, update and remove users (Admin or Cashier) with auto-generated IDs",
+      "Admins add, update and remove menu items with price and stock quantity; double-click a row to edit it",
+      "Sales history for admins and cashiers, with a filter by month",
+      "Cashiers search the menu as they type, add items to a cart, change quantities and clear the cart",
+      "Stock check stops a cashier from selling more than is available",
+      "Bill summary with 1.5% VAT and an optional discount",
+      "Confirming an order saves every sale and generates a sales invoice with date, items and totals",
+      "Profile page for every user",
     ],
     architecture: [
-      "Windows Forms screens for each role, with a shared DataAccess class for all database calls",
+      "Separate Windows Forms for login, admin panel, cashier panel, user management, menu management, ordering, sales history and profile",
+      "A shared DataAccess class handles the SQL Server connection and every query",
     ],
     database: [
-      "SQL Server database with tables for logins, users, menu items, orders and sales",
+      "SQL Server database with 5 tables: LogIn, UserTable, MenuTable, OrderTable and SellTable",
     ],
     challenges: [],
-    contribution: [],                // TODO
-    next: [],
+    contribution: [],
+    next: [
+      "Replace string-built SQL with parameterized queries to prevent SQL injection",
+      "Store passwords as hashes instead of plain text",
+    ],
   },
 
   {
@@ -176,25 +189,32 @@ const PROJECTS = [
     stack: ["PHP", "MySQL", "JavaScript (AJAX)", "HTML", "CSS", "MVC"],
     status: "Completed",
     year: "",                        // TODO
-    role: "",                        // TODO
+    role: "Full-stack developer",
     links: { live: "", repo: "https://github.com/CodeFahim/Travel_Management" },
     image: "assets/travel-guide.webp",
     overview:
       "A travel guide web application built in PHP using the MVC pattern, with a MySQL database. Scouts add destinations, admins review them, and travellers explore the approved ones.",
     problem: "",                     // TODO
     features: [
-      "Scouts submit destinations; admins approve them before they go live",
-      "Live AJAX search and filters for browsing destinations",
-      "Wishlist and comments for users",
-      "Trip cost estimator",
-      "Role-based login with a Remember Me option",
+      "Three roles (admin, scout, user); new accounts must be verified by an admin before they can use their role",
+      "Scouts submit destinations with photos and can request edits to published ones; every submission waits for admin approval",
+      "Admins approve or reject submissions with a reason, and manage users, posts, cost estimates and comments",
+      "Live AJAX search, plus filters by country, genre (beach, mountain, city, historical, nature) and cost level",
+      "Users save destinations to a wishlist and comment on them",
+      "Trip cost estimator based on a cost per person per week set by the admin",
+      "Profile page with photo upload and password change",
+      "Login with a Remember Me option using a secure token cookie",
     ],
     architecture: [
       "MVC structure: models for data, controllers for logic, views for pages",
-      "Security: CSRF protection on forms and prepared statements for every database query",
+      "One front controller (index.php) routes 11 pages and 10 AJAX actions",
+      "Security: CSRF tokens on forms, prepared statements for database queries, hashed passwords (password_hash) and a new session ID on login",
+      "Server-side validation of every form and AJAX input",
     ],
     database: [
-      "MySQL database (schema included in database.sql)",
+      "6 MySQL tables: users, posts, post_requests, wishlist, comments and cost_estimates, linked with foreign keys",
+      "Scout submissions are stored as JSON in post_requests until an admin approves them",
+      "A unique key stops the same destination being added to a wishlist twice",
     ],
     challenges: [],
     contribution: [],
@@ -326,7 +346,7 @@ const RESEARCH = [
     authors: "",                     // TODO: author list from IEEE Xplore
     areas: ["Agentic AI", "Artificial Intelligence"],
     status: "Published",
-    contribution: "",                // TODO: e.g. "First author"
+    contribution: "Second author",
     summary: "",                     // TODO: 2-3 sentences from your abstract
     doi: "",                         // TODO
     link: "https://ieeexplore.ieee.org/document/11748705",
