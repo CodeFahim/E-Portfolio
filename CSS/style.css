@@ -11,24 +11,27 @@
 /* 1. COLORS AND SIZES ------------------------------------ */
 
 :root {
-  --bg: #0b0d12;
-  --bg-2: #10141c;
-  --card: #141824;
-  --text: #f5f7fa;
-  --muted: #a1a1aa;
-  --line: #262b38;
-  --line-hover: #3a4256;
-  --accent: #60a5fa;
-  --accent-hover: #93c5fd;
-  --accent-soft: rgba(96, 165, 250, 0.12);
+  /* Theme: Midnight Sunset (navy + sunset orange + dusk blue) */
+  --bg: #0d1a33;
+  --bg-2: #0f1e3b;
+  --card: #142544;
+  --text: #eef3fb;
+  --muted: #a3b5d1;
+  --line: #24375c;
+  --line-hover: #33497a;
+  --accent: #ff6a2b;          /* sunset orange: buttons, links, active states */
+  --accent-hover: #ff8a55;
+  --accent-soft: rgba(255, 106, 43, 0.12);
+  --highlight: #8fb4e3;       /* dusk blue: calm text highlights */
+  --highlight-soft: rgba(143, 180, 227, 0.12);
   --green: #4ade80;
   --amber: #fbbf24;
   --red: #f87171;
-  --header-bg: rgba(11, 13, 18, 0.96);
+  --header-bg: rgba(13, 26, 51, 0.96);
 
-  --term-bg: #0d1017;
-  --term-text: #dfe3ea;
-  --term-dim: #7c8494;
+  --term-bg: #0a1529;
+  --term-text: #e1e8f4;
+  --term-dim: #7e90b0;
 
   --font: "Geist", "Inter", "Segoe UI", sans-serif;
   --mono: "Geist Mono", Consolas, monospace;
@@ -381,7 +384,7 @@ h1, h2, h3, h4 {
 
 .hero-hello {
   margin-bottom: 0.75rem;
-  color: var(--accent);
+  color: var(--highlight);
   font-family: var(--mono);
   font-size: 0.95rem;
 }
@@ -394,7 +397,7 @@ h1, h2, h3, h4 {
 
 .hero-title {
   margin-top: 0.9rem;
-  color: var(--accent-hover);
+  color: var(--highlight);
   font-size: 1.2rem;
   font-weight: 550;
 }
@@ -411,9 +414,9 @@ h1, h2, h3, h4 {
 }
 
 .hero .tags li {
-  border-color: rgba(96, 165, 250, 0.35);
-  background: var(--accent-soft);
-  color: var(--accent-hover);
+  border-color: rgba(143, 180, 227, 0.35);
+  background: var(--highlight-soft);
+  color: var(--highlight);
   font-size: 0.85rem;
 }
 
@@ -521,7 +524,7 @@ h1, h2, h3, h4 {
   width: 0.65rem;
   height: 0.65rem;
   border-radius: 50%;
-  background: #2a3040;
+  background: var(--line);
 }
 
 .term-screen {
@@ -552,7 +555,7 @@ h1, h2, h3, h4 {
 
 .section-label {
   margin-bottom: 0.6rem;
-  color: var(--accent);
+  color: var(--highlight);
   font-family: var(--mono);
   font-size: 0.85rem;
 }
@@ -782,7 +785,7 @@ h1, h2, h3, h4 {
 }
 
 .project-category {
-  color: var(--accent);
+  color: var(--highlight);
   font-size: 0.82rem;
   font-weight: 500;
 }
@@ -1014,13 +1017,13 @@ h1, h2, h3, h4 {
   padding: 0.15rem 0.65rem;
   border: 1px solid var(--line);
   border-radius: 999px;
-  color: var(--accent-hover);
+  color: var(--highlight);
   font-size: 0.78rem;
 }
 
 .edu-degree {
   margin-top: 0.6rem;
-  color: var(--accent-hover);
+  color: var(--highlight);
   font-weight: 550;
 }
 
