@@ -1,206 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tahsin Ahmed Fahim - CV</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-<style>
-  /* ---------- Page ---------- */
-  * { box-sizing: border-box; }
-  @page { size: A4; margin: 0; }
-  html { background: #e9e9e9; }
-  body { margin: 0; color: #1a1a1a; font-family: Arimo, Arial, Helvetica, sans-serif; font-size: 9pt; line-height: 1.3; }
-  .page { width: 210mm; min-height: 297mm; margin: 12px auto; padding: 10mm 13mm 8mm; background: #fff;
-          box-shadow: 0 2px 12px rgba(0, 0, 0, .15); }
-  a { color: inherit; text-decoration: none; }
-  h1, h2, h3, p, ul, ol { margin: 0; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tahsin Ahmed Fahim - CV</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ---------- Page ---------- */
+    * {
+      box-sizing: border-box;
+    }
 
-  /* ---------- Header ---------- */
-  header { text-align: center; }
-  h1 { font-size: 21pt; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
-  .role { margin-top: 2px; color: #2b5fc4; font-size: 10.2pt; font-weight: 700; }
-  .contact { margin-top: 3px; color: #555; font-size: 8.6pt; }
-  .contact .sep { margin: 0 .4em; color: #999; }
-  .contact a { color: #2b5fc4; }
+    @page {
+      size: A4;
+      margin: 0;
+    }
 
-  /* ---------- Sections ---------- */
-  section { margin-top: 6px; }
-  h2 { margin-bottom: 3px; padding-bottom: 1.5px; border-bottom: 1.2px solid #1a1a1a;
-       font-size: 9.8pt; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
-  .row { display: flex; justify-content: space-between; gap: 12px; }
-  .row .right { white-space: nowrap; color: #333; }
-  .muted { color: #555; }
-  .entry + .entry { margin-top: 3px; }
-  ul.points { padding-left: 1.05em; }
-  ul.points li { margin-top: 1px; }
-  ul.points li::marker { color: #555; }
+    html {
+      background: #e9e9e9;
+    }
 
-  /* Skills: label + list, one category per line */
-  .skills p { margin-top: 1px; }
+    body {
+      margin: 0;
+      color: #1a1a1a;
+      font-family: Arimo, Arial, Helvetica, sans-serif;
+      font-size: 9pt;
+      line-height: 1.3;
+    }
 
-  /* Projects: title + blue stack on one line */
-  .project { margin-top: 4px; }
-  .project-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .45em; }
-  .project-head b { font-weight: 700; }
-  .stack { color: #2b5fc4; font-style: italic; font-weight: 700; font-size: 8.6pt; }
-  .repo { color: #2b5fc4; font-size: 8.4pt; text-decoration: underline; }
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 12px auto;
+      padding: 10mm 13mm 8mm;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, .15);
+    }
 
-  /* Publications: numbered, IEEE style */
-  ol.pubs { padding-left: 1.3em; }
-  ol.pubs li { margin-top: 1.5px; }
-  .pubs a { color: #2b5fc4; }
-  .sub-label { margin-top: 4px; font-weight: 700; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  /* ---------- Screen-only button ---------- */
-  .print-btn { position: fixed; top: 14px; right: 14px; padding: 8px 14px; border: 0; border-radius: 6px;
-               background: #2b5fc4; color: #fff; font: 700 13px Arial, sans-serif; cursor: pointer; }
-  @media print {
-    html { background: #fff; }
-    .page { margin: 0; box-shadow: none; }
-    .print-btn { display: none; }
-  }
-</style>
+    h1,
+    h2,
+    h3,
+    p,
+    ul,
+    ol {
+      margin: 0;
+    }
+
+    /* ---------- Header ---------- */
+    header {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 21pt;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .role {
+      margin-top: 2px;
+      color: #2b5fc4;
+      font-size: 10.2pt;
+      font-weight: 700;
+    }
+
+    .contact {
+      margin-top: 3px;
+      color: #555;
+      font-size: 8.6pt;
+    }
+
+    .contact .sep {
+      margin: 0 .4em;
+      color: #999;
+    }
+
+    .contact a {
+      color: #2b5fc4;
+    }
+
+    /* ---------- Sections ---------- */
+    section {
+      margin-top: 6px;
+    }
+
+    h2 {
+      margin-bottom: 3px;
+      padding-bottom: 1.5px;
+      border-bottom: 1.2px solid #1a1a1a;
+      font-size: 9.8pt;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .row .right {
+      white-space: nowrap;
+      color: #333;
+    }
+
+    .muted {
+      color: #555;
+    }
+
+    .entry+.entry {
+      margin-top: 3px;
+    }
+
+    ul.points {
+      padding-left: 1.05em;
+    }
+
+    ul.points li {
+      margin-top: 1px;
+    }
+
+    ul.points li::marker {
+      color: #555;
+    }
+
+    /* Skills: label + list, one category per line */
+    .skills p {
+      margin-top: 1px;
+    }
+
+    /* Projects: title + blue stack on one line */
+    .project {
+      margin-top: 4px;
+    }
+
+    .project-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0 .45em;
+    }
+
+    .project-head b {
+      font-weight: 700;
+    }
+
+    .stack {
+      color: #2b5fc4;
+      font-style: italic;
+      font-weight: 700;
+      font-size: 8.6pt;
+    }
+
+    .repo {
+      color: #2b5fc4;
+      font-size: 8.4pt;
+      text-decoration: underline;
+    }
+
+    /* Publications: numbered, IEEE style */
+    ol.pubs {
+      padding-left: 1.3em;
+    }
+
+    ol.pubs li {
+      margin-top: 1.5px;
+    }
+
+    .pubs a {
+      color: #2b5fc4;
+    }
+
+    .sub-label {
+      margin-top: 4px;
+      font-weight: 700;
+    }
+
+    /* ---------- Screen-only button ---------- */
+    .print-btn {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      padding: 8px 14px;
+      border: 0;
+      border-radius: 6px;
+      background: #2b5fc4;
+      color: #fff;
+      font: 700 13px Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    @media print {
+      html {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+      }
+
+      .print-btn {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<!-- Save as PDF: click the button (or Ctrl + P) → Save as PDF → Paper A4 → Margins None → Background graphics ON -->
-<button class="print-btn" onclick="window.print()">Save as PDF</button>
+  <!-- Save as PDF: click the button (or Ctrl + P) → Save as PDF → Paper A4 → Margins None → Background graphics ON -->
+  <button class="print-btn" onclick="window.print()">Save as PDF</button>
 
-<main class="page">
+  <main class="page">
 
-  <header>
-    <h1>Tahsin Ahmed Fahim</h1>
-    <p class="role">Computer Science &amp; Engineering Undergraduate | Full-Stack Developer | AI/ML Researcher</p>
-    <p class="contact">
-      <span>Hemayetpur, Savar, Bangladesh</span><span class="sep">|</span>
-      <a href="tel:+8801611474583">+880 1611-474583</a><span class="sep">|</span>
-      <a href="mailto:tahsinahmedfahim01611@gmail.com">tahsinahmedfahim01611@gmail.com</a><span class="sep">|</span>
-      <a href="https://github.com/CodeFahim">github.com/CodeFahim</a><span class="sep">|</span>
-      <a href="https://codefahim.github.io/E-Portfolio/">Portfolio</a>
-      <!-- TODO: <span class="sep">|</span><a href="https://www.linkedin.com/in/your-handle">LinkedIn</a> -->
-    </p>
-  </header>
+    <header>
+      <h1>Tahsin Ahmed Fahim</h1>
+      <p class="role">Computer Science &amp; Engineering Undergraduate | Full-Stack Developer | AI/ML Researcher</p>
+      <p class="contact">
+        <span>Hemayetpur, Savar, Bangladesh</span><span class="sep">|</span>
+        <a href="tel:+8801611474583">+880 1611-474583</a><span class="sep">|</span>
+        <a href="mailto:tahsinahmedfahim01611@gmail.com">tahsinahmedfahim01611@gmail.com</a><span class="sep">|</span>
+        <a href="https://github.com/CodeFahim">github.com/CodeFahim</a><span class="sep">|</span>
+        <a href="https://codefahim.github.io/E-Portfolio/">Portfolio</a>
+        <!-- TODO: <span class="sep">|</span><a href="https://www.linkedin.com/in/your-handle">LinkedIn</a> -->
+      </p>
+    </header>
 
-  <!-- PROFILE SUMMARY (structure: Ishrar) -->
-  <section>
-    <h2>Profile Summary</h2>
-    <p>Computer Science and Engineering undergraduate at AIUB (CGPA 3.90/4.00) focused on backend and full-stack
-      development: REST APIs and web applications with NestJS, Next.js, TypeScript and PostgreSQL, and PHP/MySQL web
-      applications, with additional projects in C#, Java and C++. Author of 3 IEEE conference papers on explainable
-      machine learning.</p>
-  </section>
+    <!-- PROFILE SUMMARY (structure: Ishrar) -->
+    <section>
+      <h2>Profile Summary</h2>
+      <p>Computer Science and Engineering undergraduate at AIUB (CGPA 3.90/4.00) focused on backend and full-stack
+        development: REST APIs and web applications with NestJS, Next.js, TypeScript and PostgreSQL, and PHP/MySQL web
+        applications, with additional projects in C#, Java and C++. Author of 3 IEEE conference papers on explainable
+        machine learning.</p>
+    </section>
 
-  <!-- EDUCATION (layout: Ishrar, detail line: Junayed) -->
-  <section>
-    <h2>Education</h2>
-    <div class="entry">
-      <div class="row"><b>American International University-Bangladesh (AIUB)</b><span class="right">Dhaka, Bangladesh</span></div>
-      <div class="row"><span>B.Sc. in Computer Science and Engineering <span class="muted">| Major: Software Engineering</span></span><b class="right">CGPA: 3.90 / 4.00</b></div>
-      <p class="muted"><b style="color:#1a1a1a">Relevant Coursework:</b> Advanced Web Technology, OOP, Data Structures &amp; Algorithms,
-        Database Systems, Software Requirements Engineering, Software Quality &amp; Testing, Machine Learning</p>
-    </div>
-    <div class="entry">
-      <div class="row"><span><b>BPATC School &amp; College</b> <span class="muted">| Higher Secondary Certificate (HSC), Science</span></span><b class="right">GPA: 5.00 / 5.00</b></div>
-    </div>
-  </section>
+    <!-- EDUCATION (layout: Ishrar, detail line: Junayed) -->
+    <section>
+      <h2>Education</h2>
+      <div class="entry">
+        <div class="row"><b>American International University-Bangladesh (AIUB)</b><span class="right">Dhaka,
+            Bangladesh</span></div>
+        <div class="row"><span>B.Sc. in Computer Science and Engineering <span class="muted">| Major: Software
+              Engineering</span></span><b class="right">CGPA: 3.90 / 4.00</b></div>
+        <p class="muted">
+          <b style="color:#1a1a1a">Expected Graduation: MAY, 2027 </b>
+        </p>
+        <p class="muted"><b style="color:#1a1a1a">Relevant Coursework:</b> Advanced Web Technology, OOP, Data Structures
+          &amp; Algorithms,
+          Database Systems, Software Requirements Engineering, Software Quality &amp; Testing, Machine Learning</p>
+      </div>
+      <div class="entry">
+        <div class="row"><span><b>BPATC School &amp; College</b> <span class="muted">| Higher Secondary Certificate
+              (HSC), Science</span></span><b class="right">GPA: 5.00 / 5.00</b></div>
+      </div>
+    </section>
 
-  <!-- TECHNICAL SKILLS (focused categories: Junayed) -->
-  <section class="skills">
-    <h2>Technical Skills</h2>
-    <p><b>Languages:</b> TypeScript, JavaScript, PHP, C++, SQL <span class="muted">| Familiar: C#, Java, Python</span></p>
-    <p><b>Backend:</b> NestJS, Node.js, REST APIs, JWT Authentication, PHP (MVC)</p>
-    <p><b>Frontend:</b> Next.js, React, Tailwind CSS, HTML, CSS, AJAX</p>
-    <p><b>Databases:</b> PostgreSQL, MySQL, Microsoft SQL Server, TypeORM</p>
-    <p><b>Core Concepts:</b> OOP, Data Structures &amp; Algorithms, MVC, Role-Based Access Control, Relational Database Design</p>
-    <p><b>ML &amp; Research:</b> Random Forest, XGBoost, SVM, SMOTE, SHAP, Probability Calibration</p>
-    <p><b>Tools &amp; Desktop:</b> Git, GitHub, VS Code, Visual Studio, LaTeX, .NET (Windows Forms), OpenGL / GLUT</p>
-  </section>
+    <!-- TECHNICAL SKILLS (focused categories: Junayed) -->
+    <section class="skills">
+      <h2>Technical Skills</h2>
+      <p><b>Languages:</b> TypeScript, JavaScript, PHP, C++, SQL <span class="muted">| Familiar: C#, Java, Python</span>
+      </p>
+      <p><b>Backend:</b> NestJS, Node.js, REST APIs, JWT Authentication, PHP (MVC)</p>
+      <p><b>Frontend:</b> Next.js, React, Tailwind CSS, HTML, CSS, AJAX</p>
+      <p><b>Databases:</b> PostgreSQL, MySQL, Microsoft SQL Server, TypeORM</p>
+      <p><b>Core Concepts:</b> OOP, Data Structures &amp; Algorithms, MVC, Role-Based Access Control, Relational
+        Database Design</p>
+      <p><b>ML &amp; Research:</b> Random Forest, XGBoost, SVM, SMOTE, SHAP, Probability Calibration</p>
+      <p><b>Tools &amp; Desktop:</b> Git, GitHub, VS Code, Visual Studio, LaTeX, .NET (Windows Forms), OpenGL / GLUT</p>
+    </section>
 
-  <!-- FEATURED PROJECTS (presentation: Ishrar, implementation detail: Junayed) -->
-  <section>
-    <h2>Featured Projects</h2>
+    <!-- FEATURED PROJECTS (presentation: Ishrar, implementation detail: Junayed) -->
+    <section>
+      <h2>Featured Projects</h2>
 
-    <div class="project">
-      <div class="project-head"><b>PawsHome BD | Multi-Role Pet Adoption Platform</b>
-        <span class="stack">NestJS, Next.js, TypeScript, TypeORM, PostgreSQL</span>
-        <a class="repo" href="https://github.com/CodeFahim/Paws_Home_BD">GitHub</a></div>
+      <div class="project">
+        <div class="project-head"><b>PawsHome BD | Multi-Role Pet Adoption Platform</b>
+          <span class="stack">NestJS, Next.js, TypeScript, TypeORM, PostgreSQL</span>
+          <a class="repo" href="https://github.com/CodeFahim/Paws_Home_BD">GitHub</a>
+        </div>
+        <ul class="points">
+          <li>Built a platform where listers post pets, admins verify and approve them, adopters adopt and vets provide
+            care.</li>
+          <li>Built a NestJS REST API with 74 endpoints across 4 roles: JWT auth, bcrypt, DTO validation, mailer and
+            Multer uploads.</li>
+          <li>Designed the PostgreSQL schema with TypeORM relations; built the 41-page Next.js frontend with a dashboard
+            per role.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-head"><b>Travel Management System</b>
+          <span class="stack">PHP (MVC), MySQL, JavaScript (AJAX)</span>
+          <a class="repo" href="https://github.com/CodeFahim/Travel_Management">GitHub</a>
+        </div>
+        <ul class="points">
+          <li>Built a travel platform: scouts submit destinations, admins approve, users browse with AJAX search,
+            filters and wishlists.</li>
+          <li>6-table MySQL schema; secured with CSRF tokens, prepared statements, hashed passwords and Remember Me
+            login.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-head"><b>Cafe La Vien | Cafe Management System</b>
+          <span class="stack">C#, .NET Windows Forms, SQL Server</span>
+          <a class="repo" href="https://github.com/CodeFahim/Cafe_La_vien">GitHub</a>
+        </div>
+        <ul class="points">
+          <li>Built a desktop app with Admin (users, menu, sales) and Cashier (orders, cart, invoices) workflows, stock
+            checks and VAT billing.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-head"><b>Bank Management System</b>
+          <span class="stack">Java, OOP</span>
+        </div>
+        <ul class="points">
+          <li>Built deposits, withdrawals and inter-account transfers with a transaction history of IDs, dates, amounts,
+            senders and receivers.</li>
+        </ul>
+      </div>
+
+      <div class="project">
+        <div class="project-head"><b>A Day in Winter: Rural Village Life</b>
+          <span class="stack">C++, OpenGL, GLUT</span>
+          <a class="repo" href="https://github.com/CodeFahim/Graphics-Project">GitHub</a>
+        </div>
+        <ul class="points">
+          <li>Built four animated OpenGL scenes (~2,000 lines) with modular drawing functions, timer animation and
+            keyboard/menu control.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RESEARCH & PUBLICATIONS (format: Faysal) -->
+    <section>
+      <h2>Research &amp; Publications</h2>
+      <div class="row"><span><b>Machine Learning Research</b> <span class="muted">| <i>Undergraduate Researcher,
+              Department of Computer Science, AIUB</i></span></span></div>
       <ul class="points">
-        <li>Built a platform where listers post pets, admins verify and approve them, adopters adopt and vets provide care.</li>
-        <li>Built a NestJS REST API with 74 endpoints across 4 roles: JWT auth, bcrypt, DTO validation, mailer and Multer uploads.</li>
-        <li>Designed the PostgreSQL schema with TypeORM relations; built the 41-page Next.js frontend with a dashboard per role.</li>
+        <li><b>Phishing detection:</b> 7 classifiers on 1,082,664 URLs from 8 sources; Random Forest best, SHAP
+          explanations, McNemar’s test.</li>
+        <li><b>Stroke risk:</b> LR, RF, XGBoost and SVM on imbalanced clinical data (SMOTE), with SHAP and Platt /
+          isotonic calibration.</li>
+        <li><b>Agentic AI:</b> built a predictive framework for balancing autonomy and human oversight in agentic AI
+          adoption.</li>
       </ul>
-    </div>
+      <p class="sub-label">Publications</p>
+      <ol class="pubs">
+        <li><b>T. A. Fahim</b>, F. Mahmud, S. J. Snegdha, R. A. M. Rudro, T. Sayeed, and K. Nur,
+          “<a href="https://ieeexplore.ieee.org/document/11748531">Phishing URL Detection Using Machine Learning: A
+            Comparative Study with SHAP Based Explainability on a Large-Scale Multi-Source Dataset</a>,”
+          <i>IEEE ICACT 2026</i>, Kathmandu, Nepal.
+        </li>
+        <li>S. J. Snegdha, <b>T. A. Fahim</b>, R. A. M. Rudro, T. Sayeed, and K. Nur,
+          “<a href="https://ieeexplore.ieee.org/document/11748705">Balancing Autonomy and Oversight: A Predictive
+            Framework for Agentic AI Adoption</a>,”
+          <i>IEEE ICACT 2026</i>, Kathmandu, Nepal.
+        </li>
+        <li><b>T. A. Fahim</b>, S. J. Snegdha, T. Rahannum, R. A. M. Rudro, and K. Nur,
+          “Explainability and Calibration of Stroke Risk Prediction Models Based On AI,”
+          <i>IEEE COMPAS 2026</i>, University of Dhaka, Bangladesh (accepted).
+        </li>
+      </ol>
+    </section>
 
-    <div class="project">
-      <div class="project-head"><b>Travel Management System</b>
-        <span class="stack">PHP (MVC), MySQL, JavaScript (AJAX)</span>
-        <a class="repo" href="https://github.com/CodeFahim/Travel_Management">GitHub</a></div>
+    <!-- ACHIEVEMENTS (format: Faysal) -->
+    <section>
+      <h2>Achievements</h2>
       <ul class="points">
-        <li>Built a travel platform: scouts submit destinations, admins approve, users browse with AJAX search, filters and wishlists.</li>
-        <li>6-table MySQL schema; secured with CSRF tokens, prepared statements, hashed passwords and Remember Me login.</li>
+        <li><b>Finalist,</b> Three Minute Thesis (3MT) Competition and Sciblitz 2.0 Science &amp; Tech Contest,
+          Chittagong University of Engineering &amp; Technology (CUET)</li>
       </ul>
-    </div>
+    </section>
 
-    <div class="project">
-      <div class="project-head"><b>Cafe La Vien | Cafe Management System</b>
-        <span class="stack">C#, .NET Windows Forms, SQL Server</span>
-        <a class="repo" href="https://github.com/CodeFahim/Cafe_La_vien">GitHub</a></div>
-      <ul class="points">
-        <li>Built a desktop app with Admin (users, menu, sales) and Cashier (orders, cart, invoices) workflows, stock checks and VAT billing.</li>
-      </ul>
-    </div>
-
-    <div class="project">
-      <div class="project-head"><b>Bank Management System</b>
-        <span class="stack">Java, OOP</span></div>
-      <ul class="points">
-        <li>Built deposits, withdrawals and inter-account transfers with a transaction history of IDs, dates, amounts, senders and receivers.</li>
-      </ul>
-    </div>
-
-    <div class="project">
-      <div class="project-head"><b>A Day in Winter: Rural Village Life</b>
-        <span class="stack">C++, OpenGL, GLUT</span>
-        <a class="repo" href="https://github.com/CodeFahim/Graphics-Project">GitHub</a></div>
-      <ul class="points">
-        <li>Built four animated OpenGL scenes (~2,000 lines) with modular drawing functions, timer animation and keyboard/menu control.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- RESEARCH & PUBLICATIONS (format: Faysal) -->
-  <section>
-    <h2>Research &amp; Publications</h2>
-    <div class="row"><span><b>Machine Learning Research</b> <span class="muted">| <i>Undergraduate Researcher, Department of Computer Science, AIUB</i></span></span></div>
-    <ul class="points">
-      <li><b>Phishing detection:</b> 7 classifiers on 1,082,664 URLs from 8 sources; Random Forest best, SHAP explanations, McNemar’s test.</li>
-      <li><b>Stroke risk:</b> LR, RF, XGBoost and SVM on imbalanced clinical data (SMOTE), with SHAP and Platt / isotonic calibration.</li>
-      <li><b>Agentic AI:</b> built a predictive framework for balancing autonomy and human oversight in agentic AI adoption.</li>
-    </ul>
-    <p class="sub-label">Publications</p>
-    <ol class="pubs">
-      <li><b>T. A. Fahim</b>, F. Mahmud, S. J. Snegdha, R. A. M. Rudro, T. Sayeed, and K. Nur,
-        “<a href="https://ieeexplore.ieee.org/document/11748531">Phishing URL Detection Using Machine Learning: A Comparative Study with SHAP Based Explainability on a Large-Scale Multi-Source Dataset</a>,”
-        <i>IEEE ICACT 2026</i>, Kathmandu, Nepal.</li>
-      <li>S. J. Snegdha, <b>T. A. Fahim</b>, R. A. M. Rudro, T. Sayeed, and K. Nur,
-        “<a href="https://ieeexplore.ieee.org/document/11748705">Balancing Autonomy and Oversight: A Predictive Framework for Agentic AI Adoption</a>,”
-        <i>IEEE ICACT 2026</i>, Kathmandu, Nepal.</li>
-      <li><b>T. A. Fahim</b>, S. J. Snegdha, T. Rahannum, R. A. M. Rudro, and K. Nur,
-        “Explainability and Calibration of Stroke Risk Prediction Models Based On AI,”
-        <i>IEEE COMPAS 2026</i>, University of Dhaka, Bangladesh (accepted).</li>
-    </ol>
-  </section>
-
-  <!-- ACHIEVEMENTS (format: Faysal) -->
-  <section>
-    <h2>Achievements</h2>
-    <ul class="points">
-      <li><b>Finalist,</b> Three Minute Thesis (3MT) Competition and Sciblitz 2.0 Science &amp; Tech Contest, Chittagong University of Engineering &amp; Technology (CUET)</li>
-    </ul>
-  </section>
-
-</main>
+  </main>
 </body>
+
 </html>
